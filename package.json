@@ -1,0 +1,15 @@
+{
+  "name": "careflow-ai",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently -n frontend,gateway,auth,agent,billing -c cyan,magenta,green,yellow,blue \"npm run dev --prefix frontend\" \"npm run dev --prefix backend/gateway\" \"npm run dev --prefix backend/services/auth\" \"npm run dev --prefix backend/services/agent\" \"npm run dev --prefix backend/services/billing\"",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev:backend": "concurrently -n gateway,auth,agent,billing -c magenta,green,yellow,blue \"npm run dev --prefix backend/gateway\" \"npm run dev --prefix backend/services/auth\" \"npm run dev --prefix backend/services/agent\" \"npm run dev --prefix backend/services/billing\"",
+    "install:all": "npm install && npm install --prefix frontend && npm install --prefix backend && npm install --prefix backend/gateway && npm install --prefix backend/services/auth && npm install --prefix backend/services/agent && npm install --prefix backend/services/billing",
+    "start": "npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
