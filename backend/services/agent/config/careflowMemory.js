@@ -55,6 +55,16 @@ export const addCaseToIndex = async (summary) => {
     await redis.set(INDEX_KEY, JSON.stringify(index), "EX", 60 * 60 * 24 * 7)
 }
 
+export const updateCaseInIndex = async (caseId, patch) => {
+    const raw = await redis.get(INDEX_KEY)
+    const index = raw ? JSON.parse(raw) : []
+    const i = index.findIndex((c) => c.caseId === caseId)
+    if (i === -1) return null
+    index[i] = { ...index[i], ...patch }
+    await redis.set(INDEX_KEY, JSON.stringify(index), "EX", 60 * 60 * 24 * 7)
+    return index[i]
+}
+
 export const getCaseIndex = async () => {
     const raw = await redis.get(INDEX_KEY)
     return raw ? JSON.parse(raw) : []

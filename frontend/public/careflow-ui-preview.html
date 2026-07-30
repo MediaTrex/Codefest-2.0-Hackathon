@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CareFlow AI — Command Center preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cf-bg: #f5f6f8; --cf-surface: #ffffff; --cf-surface-sunken: #eef0f3;
+    --cf-border: #e2e5eb; --cf-border-strong: #cbd1da;
+    --cf-ink: #12161c; --cf-ink-soft: #4b5563; --cf-ink-faint: #8a93a3;
+    --cf-brand: #4338ca; --cf-brand-soft: #edecfb;
+    --cf-danger: #b91c1c; --cf-danger-ink: #7f1d1d; --cf-danger-soft: #fbeceb; --cf-danger-border: #eec2c0;
+    --cf-caution: #92400e; --cf-caution-soft: #fbf1e3; --cf-caution-border: #edd6ae;
+    --cf-safe: #15803d; --cf-safe-soft: #eaf6ee; --cf-safe-border: #bfe2cb;
+    --font-ui: 'Inter', sans-serif; --font-mono: 'IBM Plex Mono', monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background: var(--cf-bg); font-family: var(--font-ui); color: var(--cf-ink); }
+  .header { background: var(--cf-surface); border-bottom: 1px solid var(--cf-border); }
+  .header-inner { max-width: 1400px; margin: 0 auto; padding: 0 24px; height: 64px; display:flex; align-items:center; gap:32px; }
+  .logo { width:32px; height:32px; border-radius:8px; background:var(--cf-brand); display:grid; place-items:center; color:#fff; font-size:16px; }
+  .brand-name { font-size:14px; font-weight:600; line-height:1.2; }
+  .brand-sub { font-size:11px; color:var(--cf-ink-faint); }
+  nav { display:flex; gap:4px; }
+  nav button { border:none; background:none; font-size:13.5px; font-weight:500; padding:8px 12px; border-radius:6px; color:var(--cf-ink-soft); cursor:pointer; font-family:var(--font-ui); }
+  nav button.active { background:var(--cf-brand); color:#fff; }
+  .avatar { width:32px;height:32px;border-radius:50%; background:var(--cf-brand-soft); color:var(--cf-brand); display:grid; place-items:center; font-size:12px; font-weight:600; }
+  main { max-width:1400px; margin:0 auto; padding:32px 24px; }
+  h1 { font-size:24px; font-weight:600; margin:0; }
+  .subtitle { font-size:14px; color:var(--cf-ink-faint); margin:4px 0 24px; }
+  .kpi-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:16px; }
+  .kpi-card { background:var(--cf-surface); border:1px solid var(--cf-border); border-radius:12px; padding:16px; display:flex; align-items:center; gap:12px; }
+  .kpi-icon { width:36px;height:36px;border-radius:8px; display:grid; place-items:center; flex-shrink:0; }
+  .kpi-label { font-size:13px; color:var(--cf-ink-faint); }
+  .kpi-value { font-size:22px; font-weight:600; font-family:var(--font-mono); margin-top:2px; }
+  .content-grid { display:grid; grid-template-columns:1.4fr 1fr; gap:16px; align-items:start; }
+  .card { background:var(--cf-surface); border:1px solid var(--cf-border); border-radius:12px; padding:20px; }
+  .card-title { font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.02em; }
+  .card-sub { font-size:13px; color:var(--cf-ink-faint); margin-top:2px; }
+  .zoom-controls { display:flex; gap:4px; }
+  .zoom-btn { width:28px;height:28px; border-radius:6px; border:1px solid var(--cf-border); background:none; display:grid; place-items:center; cursor:pointer; color:var(--cf-ink-soft); }
+  .trace-wrap { background:var(--cf-surface-sunken); border-radius:8px; margin-top:12px; overflow:hidden; }
+  .legend { display:flex; gap:16px; margin-top:12px; font-size:12px; color:var(--cf-ink-faint); align-items:center; }
+  .dot { width:8px;height:8px;border-radius:50%; display:inline-block; margin-right:5px; }
+  .stage-detail { margin-top:16px; padding-top:16px; border-top:1px solid var(--cf-border); }
+  .feed-row { display:flex; align-items:flex-start; gap:10px; padding:10px 8px; border-radius:8px; cursor:pointer; }
+  .feed-row:hover { background:var(--cf-surface-sunken); }
+  .feed-row + .feed-row { border-top:1px solid var(--cf-border); }
+  .badge { font-size:11px; padding:1px 6px; border-radius:4px; border:1px solid var(--cf-caution-border); background:var(--cf-caution-soft); color:var(--cf-caution); margin-left:6px; }
+  .chat-fab { position:fixed; bottom:20px; right:20px; background:var(--cf-brand); color:#fff; border:none; border-radius:999px; padding:12px 20px 12px 16px; display:flex; align-items:center; gap:8px; font-size:13px; font-weight:500; cursor:pointer; font-family:var(--font-ui); }
+</style>
+</head>
+<body>
+  <div class="header"><div class="header-inner">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div class="logo">♥</div>
+      <div><div class="brand-name">CareFlow AI</div><div class="brand-sub">Hospital Command</div></div>
+    </div>
+    <nav>
+      <button class="active">Dashboard</button>
+      <button>New Case</button>
+      <button>Case Queue</button>
+      <button>Analytics</button>
+    </nav>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:14px;">
+      <div class="avatar">AK</div>
+    </div>
+  </div></div>
+
+  <main>
+    <h1>Command Center</h1>
+    <p class="subtitle">Live hospital case load across the CareFlow AI pipeline</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-icon" style="background:var(--cf-surface-sunken);">📅</div><div><div class="kpi-label">Cases today</div><div class="kpi-value">14</div></div></div>
+      <div class="kpi-card"><div class="kpi-icon" style="background:var(--cf-caution-soft);color:var(--cf-caution);">⚠</div><div><div class="kpi-label">Needs review</div><div class="kpi-value">3</div></div></div>
+      <div class="kpi-card"><div class="kpi-icon" style="background:var(--cf-danger-soft);color:var(--cf-danger);">⛑</div><div><div class="kpi-label">Active emergencies</div><div class="kpi-value">2</div></div></div>
+      <div class="kpi-card"><div class="kpi-icon" style="background:var(--cf-safe-soft);color:var(--cf-safe);">📋</div><div><div class="kpi-label">Open cases</div><div class="kpi-value">9</div></div></div>
+    </div>
+
+    <div class="content-grid">
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+          <div><div class="card-title">Pipeline load</div><div class="card-sub">Each beat is one agent stage — taller and redder means more load waiting there</div></div>
+          <div class="zoom-controls">
+            <button class="zoom-btn">+</button><button class="zoom-btn">–</button><button class="zoom-btn">⟲</button>
+          </div>
+        </div>
+        <div class="trace-wrap">
+          <svg viewBox="0 0 1000 220" style="width:100%;height:200px;">
+            <line x1="0" y1="130" x2="1000" y2="130" stroke="var(--cf-border)" stroke-width="1"/>
+            <path id="trace" fill="none" stroke="var(--cf-ink-faint)" stroke-width="1.5" stroke-linejoin="round"/>
+            <g id="nodes"></g>
+          </svg>
+        </div>
+        <div class="legend">
+          <span><span class="dot" style="background:var(--cf-danger)"></span>Emergency</span>
+          <span><span class="dot" style="background:var(--cf-caution)"></span>Needs review</span>
+          <span><span class="dot" style="background:var(--cf-safe)"></span>Routine</span>
+          <span style="margin-left:auto;">Tap a stage for detail</span>
+        </div>
+        <div id="stage-detail" class="stage-detail" style="display:none;"></div>
+      </div>
+
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;">
+          <div><div class="card-title">Live feed</div><div class="card-sub">Recent pipeline cases</div></div>
+          <span style="font-size:12px;color:var(--cf-safe);display:flex;align-items:center;gap:5px;"><span class="dot" style="background:var(--cf-safe)"></span>Live</span>
+        </div>
+        <div id="feed" style="margin-top:12px;"></div>
+      </div>
+    </div>
+  </main>
+
+  <button class="chat-fab">💬 Ask CareFlow</button>
+
+<script>
+const STAGES = [
+  { id:'intake', label:'Intake', agent:'Intake Agent' },
+  { id:'records', label:'Records', agent:'Medical Record Agent' },
+  { id:'triage', label:'Triage', agent:'Triage & Diagnostic Agent' },
+  { id:'safety', label:'Safety', agent:'Prescription Safety Agent' },
+  { id:'insurance', label:'Insurance', agent:'Insurance & Billing Agent' },
+  { id:'followup', label:'Follow-up', agent:'Follow-Up Agent' },
+  { id:'explain', label:'Explain', agent:'Explainability Agent' },
+];
+const CASES = [
+  { id:'c1', name:'Priya Raman', stage:'triage', urgency:'emergency', diagnosis:'Chest pain, suspected ACS', review:true, mins:2 },
+  { id:'c2', name:'Arun Kumar', stage:'triage', urgency:'emergency', diagnosis:'Severe trauma, RTA', review:true, mins:5 },
+  { id:'c3', name:'Meena S.', stage:'intake', urgency:'routine', diagnosis:'Diagnosis pending', review:false, mins:1 },
+  { id:'c4', name:'Vikram T.', stage:'insurance', urgency:'urgent', diagnosis:'Fracture, pre-auth pending', review:true, mins:14 },
+  { id:'c5', name:'Lakshmi N.', stage:'records', urgency:'routine', diagnosis:'Follow-up: hypertension', review:false, mins:20 },
+  { id:'c6', name:'Karthik B.', stage:'safety', urgency:'routine', diagnosis:'Medication reconciliation', review:false, mins:33 },
+  { id:'c7', name:'Divya R.', stage:'triage', urgency:'urgent', diagnosis:'Fever, possible infection', review:false, mins:8 },
+  { id:'c8', name:'Suresh P.', stage:'insurance', urgency:'routine', diagnosis:'Coverage check: knee surgery', review:false, mins:41 },
+];
+
+const AMP = { danger:74, caution:48, safe:26, idle:16 };
+const STROKE = { danger:'var(--cf-danger)', caution:'var(--cf-caution)', safe:'var(--cf-safe)', idle:'var(--cf-border-strong)' };
+
+function severityOf(c){ if(c.urgency==='emergency') return 'danger'; if(c.review || c.urgency==='urgent') return 'caution'; return 'safe'; }
+
+const groups = Object.fromEntries(STAGES.map(s=>[s.id,[]]));
+CASES.forEach(c => groups[c.stage].push(c));
+
+const severities = STAGES.map(s => {
+  const g = groups[s.id];
+  if (g.some(c=>c.urgency==='emergency')) return 'danger';
+  if (g.some(c=>c.review||c.urgency==='urgent')) return 'caution';
+  if (g.length>0) return 'safe';
+  return 'idle';
+});
+
+const W=1000,H=220,BASE=130;
+const segW = W/STAGES.length;
+let d = `M 0 ${BASE}`;
+const peaks = [];
+severities.forEach((sev,i)=>{
+  const x0=i*segW, amp=AMP[sev];
+  const p1x=x0+segW*0.12, p1y=BASE-8;
+  const preQx=x0+segW*0.22, preQy=BASE;
+  const qx=x0+segW*0.32, qy=BASE+amp*0.18;
+  const rx=x0+segW*0.4, ry=BASE-amp;
+  const sx=x0+segW*0.48, sy=BASE+amp*0.3;
+  const bx=x0+segW*0.58, by=BASE;
+  const t1x=x0+segW*0.78, t1y=BASE-12;
+  const endX=x0+segW, endY=BASE;
+  d += ` L ${p1x} ${p1y} L ${preQx} ${preQy} L ${qx} ${qy} L ${rx} ${ry} L ${sx} ${sy} L ${bx} ${by} Q ${t1x} ${t1y} ${endX} ${endY}`;
+  peaks.push({x:rx,y:ry,centerX:x0+segW/2});
+});
+document.getElementById('trace').setAttribute('d', d);
+
+const nodesG = document.getElementById('nodes');
+STAGES.forEach((s,i)=>{
+  const sev = severities[i], peak = peaks[i], count = groups[s.id].length;
+  const ns = 'http://www.w3.org/2000/svg';
+  const circle = document.createElementNS(ns,'circle');
+  circle.setAttribute('cx',peak.x); circle.setAttribute('cy',peak.y); circle.setAttribute('r',17);
+  circle.setAttribute('fill','var(--cf-surface)'); circle.setAttribute('stroke',STROKE[sev]); circle.setAttribute('stroke-width',2);
+  circle.style.cursor='pointer';
+  circle.addEventListener('click', ()=>showDetail(s));
+  const text = document.createElementNS(ns,'text');
+  text.setAttribute('x',peak.x); text.setAttribute('y',peak.y+4); text.setAttribute('text-anchor','middle');
+  text.setAttribute('font-family','var(--font-mono)'); text.setAttribute('font-size','13'); text.setAttribute('font-weight','600');
+  text.setAttribute('fill','var(--cf-ink)'); text.style.pointerEvents='none'; text.textContent = count;
+  const label = document.createElementNS(ns,'text');
+  label.setAttribute('x',peak.centerX); label.setAttribute('y',H-12); label.setAttribute('text-anchor','middle');
+  label.setAttribute('font-family','var(--font-ui)'); label.setAttribute('font-size','12.5'); label.setAttribute('fill','var(--cf-ink-soft)');
+  label.textContent = s.label;
+  nodesG.appendChild(circle); nodesG.appendChild(text); nodesG.appendChild(label);
+});
+
+function showDetail(stage){
+  const el = document.getElementById('stage-detail');
+  const cases = groups[stage.id];
+  el.style.display = 'block';
+  el.innerHTML = `<p style="font-size:13px;font-weight:600;margin:0 0 8px;">${stage.label} &middot; ${stage.agent}</p>` +
+    (cases.length===0 ? `<p style="font-size:13px;color:var(--cf-ink-faint);">No cases currently at this stage.</p>` :
+    cases.map(c=>{
+      const sev = severityOf(c);
+      const color = sev==='danger'?'var(--cf-danger)':sev==='caution'?'var(--cf-caution)':'var(--cf-safe)';
+      return `<div style="display:flex;align-items:center;gap:10px;padding:6px 0;font-size:13px;"><span class="dot" style="background:${color}"></span><span style="flex:1;">${c.name}</span><span style="color:var(--cf-ink-faint);font-size:12px;">${c.mins}m ago</span></div>`;
+    }).join(''));
+}
+
+const feed = document.getElementById('feed');
+[...CASES].sort((a,b)=>a.mins-b.mins).forEach(c=>{
+  const sev = severityOf(c);
+  const color = sev==='danger'?'var(--cf-danger)':sev==='caution'?'var(--cf-caution)':'var(--cf-safe)';
+  const row = document.createElement('div');
+  row.className='feed-row';
+  row.innerHTML = `<span class="dot" style="background:${color};margin-top:5px;"></span>
+    <div style="flex:1;">
+      <div style="font-size:13px;font-weight:500;">${c.name}${c.review?'<span class=\"badge\">Review</span>':''}</div>
+      <div style="font-size:12.5px;color:var(--cf-ink-faint);">${c.diagnosis}</div>
+    </div>
+    <div style="font-size:12px;color:var(--cf-ink-faint);">${c.mins}m ago</div>`;
+  feed.appendChild(row);
+});
+</script>
+</body>
+</html>

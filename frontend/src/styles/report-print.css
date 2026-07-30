@@ -1,0 +1,152 @@
+/* Document-style report — not dashboard chrome */
+.cf-report-doc {
+  background: #fff;
+  color: #111;
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 12.5pt;
+  line-height: 1.55;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 48px 56px;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.cf-report-doc h1 {
+  font-size: 18pt;
+  font-weight: 700;
+  margin: 0 0 4px;
+  letter-spacing: 0.01em;
+}
+
+.cf-report-doc h2 {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 11pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 28px 0 10px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #222;
+}
+
+.cf-report-doc .cf-report-meta {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 10pt;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+.cf-report-doc .cf-report-brand {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 10pt;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 2px;
+}
+
+.cf-report-doc .cf-report-rule {
+  border: none;
+  border-top: 2px solid #111;
+  margin: 12px 0 20px;
+}
+
+.cf-report-doc .cf-report-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 24px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 10.5pt;
+  margin-bottom: 8px;
+}
+
+.cf-report-doc .cf-report-grid strong {
+  font-weight: 600;
+}
+
+.cf-report-doc table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 10.5pt;
+  margin-top: 6px;
+}
+
+.cf-report-doc th,
+.cf-report-doc td {
+  border: 1px solid #ccc;
+  padding: 6px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.cf-report-doc th {
+  background: #f5f5f5;
+  font-weight: 600;
+}
+
+.cf-report-doc .cf-report-pipeline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 10.5pt;
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+
+.cf-report-doc .cf-report-pipeline li::before {
+  content: "○ ";
+}
+
+.cf-report-doc .cf-report-pipeline li.done::before {
+  content: "✓ ";
+}
+
+.cf-report-doc .cf-report-pipeline li.current::before {
+  content: "● ";
+}
+
+.cf-report-doc .cf-report-disclaimer {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 9pt;
+  color: #555;
+  font-style: italic;
+  margin-top: 8px;
+}
+
+.cf-report-doc .cf-report-footer {
+  margin-top: 36px;
+  padding-top: 12px;
+  border-top: 1px solid #ccc;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 9.5pt;
+  color: #555;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media print {
+  header,
+  nav,
+  .no-print {
+    display: none !important;
+  }
+
+  body,
+  main,
+  .cf-report-print-root {
+    background: #fff !important;
+    overflow: visible !important;
+    height: auto !important;
+  }
+
+  .cf-report-doc {
+    box-shadow: none;
+    border: none;
+    margin: 0;
+    max-width: none;
+    padding: 0;
+  }
+}

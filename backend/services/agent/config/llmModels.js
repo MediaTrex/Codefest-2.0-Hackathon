@@ -3,32 +3,60 @@ dotenv.config()
 import { ChatGroq } from "@langchain/groq"
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai"
 
-const groq = new ChatGroq({
-    model: "openai/gpt-oss-120b"
-})
+const groqKey = process.env.GROQ_API_KEY?.trim()
+const googleKey = process.env.GOOGLE_API_KEY?.trim()
+const hasGroq = Boolean(groqKey) && !/^add your/i.test(groqKey)
+const hasGoogle = Boolean(googleKey) && !/^add your/i.test(googleKey)
 
-const gemini = new ChatGoogleGenerativeAI({
-    model: "gemini-2.5-flash"
-})
+let groq = null
+let gemini = null
+
+function getGroq() {
+  if (!hasGroq) {
+    throw new Error(
+      "GROQ_API_KEY is missing. Set it in backend/services/agent/.env (starts with gsk_)."
+    )
+  }
+  if (!groq) {
+    groq = new ChatGroq({
+      model: "llama-3.3-70b-versatile",
+      apiKey: groqKey,
+    })
+  }
+  return groq
+}
+
+function getGemini() {
+  if (!hasGoogle) {
+    // Fall back to Groq when Google key isn't configured
+    return getGroq()
+  }
+  if (!gemini) {
+    gemini = new ChatGoogleGenerativeAI({
+      model: "gemini-flash-latest",
+      apiKey: googleKey,
+    })
+  }
+  return gemini
+}
 
 export const getModel = async (agent) => {
-    switch (agent) {
-        case "intake":
-            return groq;
-        case "medicalRecord":
-            return groq;
-        case "diagnostic":
-            return gemini;
-        case "prescriptionSafety":
-            return groq;
-        case "insuranceBilling":
-            return groq;
-        case "followup":
-            return groq;
-        case "explainability":
-            return gemini;
-
-        default:
-            return groq;
-    }
+  switch (agent) {
+    case "intake":
+      return getGroq()
+    case "medicalRecord":
+      return getGroq()
+    case "diagnostic":
+      return getGemini()
+    case "prescriptionSafety":
+      return getGroq()
+    case "insuranceBilling":
+      return getGroq()
+    case "followup":
+      return getGroq()
+    case "explainability":
+      return getGemini()
+    default:
+      return getGroq()
+  }
 }

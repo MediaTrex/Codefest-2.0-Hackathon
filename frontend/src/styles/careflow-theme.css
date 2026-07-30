@@ -1,0 +1,42 @@
+/*
+ * CareFlow AI — design tokens
+ * Flat, clinical palette. No gradients, no glow, no glossy fills.
+ * Red/green are semantic (state), never decorative.
+ */
+:root {
+  /* surfaces */
+  --cf-bg: #f5f6f8;
+  --cf-surface: #ffffff;
+  --cf-surface-sunken: #eef0f3;
+  --cf-border: #e2e5eb;
+  --cf-border-strong: #cbd1da;
+
+  /* ink */
+  --cf-ink: #12161c;
+  --cf-ink-soft: #4b5563;
+  --cf-ink-faint: #8a93a3;
+
+  /* brand — used sparingly: logo mark, active nav, primary buttons only */
+  --cf-brand: #4338ca;
+  --cf-brand-soft: #edecfb;
+
+  /* semantic: danger (emergency / critical) */
+  --cf-danger: #b91c1c;
+  --cf-danger-ink: #7f1d1d;
+  --cf-danger-soft: #fbeceb;
+  --cf-danger-border: #eec2c0;
+
+  /* semantic: caution (needs review / moderate) */
+  --cf-caution: #92400e;
+  --cf-caution-soft: #fbf1e3;
+  --cf-caution-border: #edd6ae;
+
+  /* semantic: safe (routine / healthy) */
+  --cf-safe: #15803d;
+  --cf-safe-soft: #eaf6ee;
+  --cf-safe-border: #bfe2cb;
+
+  /* type */
+  --cf-font-ui: 'Inter', 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --cf-font-mono: 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, monospace;
+}

@@ -7,7 +7,7 @@ const port = process.env.PORT
 
 const app = express()
 
-app.use(express.json())
+app.use(express.json({ limit: "8mb" }))
 app.use("/", careflowRouter)
 
 app.use((err, req, res, next) => {
