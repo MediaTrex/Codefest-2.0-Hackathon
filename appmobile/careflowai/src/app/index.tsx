@@ -97,32 +97,48 @@ export default function Index() {
 
     setMessages((prev) => [...prev, userMessage]);
 
-   setTimeout(() => {
+  setTimeout(() => {
   const botMessage = {
     id: (Date.now() + 1).toString(),
-    text: `Thank you for sharing your symptoms. I understand that feeling unwell can be uncomfortable and concerning.
+    text: `🩺 HEALTH SUMMARY
 
-Based on the information provided, your symptoms may have several possible causes and cannot be accurately diagnosed without a medical evaluation.
+Thank you for sharing your symptoms. I understand that feeling unwell can be uncomfortable and concerning.
 
-Please make sure to rest, stay well hydrated, and eat light, nutritious meals if possible.
+ What This May Mean
+• Your symptoms may have several possible causes.
+• An accurate diagnosis cannot be made without a proper medical evaluation.
+• Monitoring how your symptoms change over time can be helpful.
 
-Monitor your symptoms closely and note any changes in their severity or duration.
+ Self-Care Tips
+• Get adequate rest.
+• Stay well hydrated throughout the day.
+• Eat light and nutritious meals whenever possible.
+• Avoid overexertion while recovering.
 
-Avoid self-medicating unless you are following instructions from a healthcare professional or using medicines as directed on their labels.
+ Things to Monitor
+• Note when your symptoms began.
+• Keep track of any changes in severity or frequency.
+• Pay attention to possible triggers or factors that make your symptoms better or worse.
 
-If your symptoms worsen, persist, or interfere with your daily activities, consider consulting a qualified healthcare provider.
+ When to Seek Medical Advice
+• Consult a healthcare professional if your symptoms persist or worsen.
+• Avoid taking medications unless they are prescribed or used according to their instructions.
 
-Seek immediate medical attention if you experience severe pain, difficulty breathing, confusion, persistent vomiting, chest pain, or any other alarming symptoms.
+ Seek Immediate Medical Attention If You Experience
+• Difficulty breathing.
+• Severe or persistent pain.
+• Chest pain.
+• Persistent vomiting.
+• Confusion or loss of consciousness.
+• Any sudden or severe worsening of your symptoms.
 
-Keeping track of when your symptoms began and any possible triggers may be helpful during a medical consultation.
-
-Take care of yourself, and don't hesitate to seek professional medical advice if you are concerned about your condition.`,
+ Take Care
+Your health matters. If you're concerned about your symptoms at any time, seeking professional medical advice is always the safest choice.`,
     sender: "bot",
   };
 
   setMessages((prev) => [...prev, botMessage]);
 }, 1000);
-
     setMessage("");
   };
 
