@@ -18,8 +18,8 @@ export default function LiveFeed({ cases = [], onSelectCase }) {
           <h3 className="text-[13px] font-semibold text-[var(--cf-ink)] tracking-wide uppercase">Live feed</h3>
           <p className="text-[13px] text-[var(--cf-ink-faint)] mt-0.5">Recent pipeline cases</p>
         </div>
-        <span className="flex items-center gap-1.5 text-[12px] text-[var(--cf-safe)]">
-          <span className="w-1.5 h-1.5 rounded-full bg-[var(--cf-safe)]" />
+        <span className="flex items-center gap-1.5 text-[12px] text-[var(--cf-ink-soft)]">
+          <span className="w-1.5 h-1.5 rounded-full bg-[var(--cf-ink)] animate-pulse" />
           Live
         </span>
       </div>
@@ -47,7 +47,7 @@ export default function LiveFeed({ cases = [], onSelectCase }) {
                       <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${sev.dot}`} />
                       <span className="text-[13px] font-medium text-[var(--cf-ink)] truncate">{c.patientName}</span>
                       {c.requires_human_review && (
-                        <span className="text-[11px] px-1.5 py-0.5 rounded border border-[var(--cf-caution-border)] bg-[var(--cf-caution-soft)] text-[var(--cf-caution)]">
+                        <span className="text-[11px] px-1.5 py-0.5 rounded border border-[var(--cf-border)] bg-[var(--cf-surface-sunken)] text-[var(--cf-ink-soft)]">
                           Review
                         </span>
                       )}

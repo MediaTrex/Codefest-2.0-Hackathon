@@ -40,7 +40,7 @@ function PatientPortal({ onBack }) {
             setResult(data)
         } catch (err) {
             console.log(err)
-            setError(err?.response?.data?.message || 'Failed to run CareFlow AI on this case.')
+            setError(err?.response?.data?.message || 'Failed to run CarePilot Ai on this case.')
         } finally {
             setLoading(false)
         }
@@ -52,11 +52,11 @@ function PatientPortal({ onBack }) {
                 <button onClick={onBack} className='flex items-center justify-center w-8 h-8 rounded-lg text-slate-500 hover:text-slate-200 hover:bg-white/[0.05] bg-transparent border-none cursor-pointer'>
                     <ArrowLeft size={15} />
                 </button>
-                <div className='flex items-center justify-center w-7 h-7 rounded-lg bg-indigo-500/10 border border-indigo-500/20'>
-                    <HeartPulse size={13} className='text-indigo-400' />
+                <div className='flex items-center justify-center w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20'>
+                    <HeartPulse size={13} className='text-emerald-400' />
                 </div>
                 <div className='text-[14px] font-semibold text-slate-100 tracking-tight'>Patient Portal</div>
-                <span className='text-[10px] font-medium text-slate-600 bg-white/[0.04] border border-white/[0.06] px-2 py-0.5 rounded-full'>CareFlow AI</span>
+                <span className='text-[10px] font-medium text-slate-600 bg-white/[0.04] border border-white/[0.06] px-2 py-0.5 rounded-full'>CarePilot Ai</span>
             </div>
 
             <div className='flex-1 flex overflow-hidden'>
@@ -68,45 +68,45 @@ function PatientPortal({ onBack }) {
 
                         <div className='grid grid-cols-2 gap-2'>
                             <input placeholder='Full name' value={form.name} onChange={handleChange('name')}
-                                className='col-span-2 bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2 text-[13px] outline-none focus:border-indigo-500/50' />
+                                className='col-span-2 bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2 text-[13px] outline-none focus:border-emerald-500/50' />
                             <input placeholder='Age' value={form.age} onChange={handleChange('age')}
-                                className='bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2 text-[13px] outline-none focus:border-indigo-500/50' />
+                                className='bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2 text-[13px] outline-none focus:border-emerald-500/50' />
                             <input placeholder='Gender' value={form.gender} onChange={handleChange('gender')}
-                                className='bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2 text-[13px] outline-none focus:border-indigo-500/50' />
+                                className='bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2 text-[13px] outline-none focus:border-emerald-500/50' />
                             <input placeholder='Contact (optional)' value={form.contact} onChange={handleChange('contact')}
-                                className='col-span-2 bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2 text-[13px] outline-none focus:border-indigo-500/50' />
+                                className='col-span-2 bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2 text-[13px] outline-none focus:border-emerald-500/50' />
                         </div>
 
                         <label className='text-[12px] text-slate-500'>Symptoms (comma separated)</label>
                         <textarea value={form.symptoms} onChange={handleChange('symptoms')} rows={2}
                             placeholder='fever, headache, sore throat'
-                            className='bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2 text-[13px] outline-none focus:border-indigo-500/50 resize-none' />
+                            className='bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2 text-[13px] outline-none focus:border-emerald-500/50 resize-none' />
 
                         <label className='text-[12px] text-slate-500'>Allergies (comma separated)</label>
                         <textarea value={form.allergies} onChange={handleChange('allergies')} rows={2}
                             placeholder='penicillin, peanuts'
-                            className='bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2 text-[13px] outline-none focus:border-indigo-500/50 resize-none' />
+                            className='bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2 text-[13px] outline-none focus:border-emerald-500/50 resize-none' />
 
                         <label className='text-[12px] text-slate-500'>Current medications (comma separated)</label>
                         <textarea value={form.currentMedications} onChange={handleChange('currentMedications')} rows={2}
                             placeholder='metformin, ibuprofen'
-                            className='bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2 text-[13px] outline-none focus:border-indigo-500/50 resize-none' />
+                            className='bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2 text-[13px] outline-none focus:border-emerald-500/50 resize-none' />
 
                         <label className='text-[12px] text-slate-500'>Medical history</label>
                         <textarea value={form.medicalHistory} onChange={handleChange('medicalHistory')} rows={3}
                             placeholder='Type 2 diabetes since 2019, asthma as a child...'
-                            className='bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2 text-[13px] outline-none focus:border-indigo-500/50 resize-none' />
+                            className='bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2 text-[13px] outline-none focus:border-emerald-500/50 resize-none' />
 
                         <div className='grid grid-cols-2 gap-2'>
                             <input placeholder='Insurance provider' value={form.insuranceProvider} onChange={handleChange('insuranceProvider')}
-                                className='bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2 text-[13px] outline-none focus:border-indigo-500/50' />
+                                className='bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2 text-[13px] outline-none focus:border-emerald-500/50' />
                             <input placeholder='Policy number' value={form.policyNumber} onChange={handleChange('policyNumber')}
-                                className='bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2 text-[13px] outline-none focus:border-indigo-500/50' />
+                                className='bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2 text-[13px] outline-none focus:border-emerald-500/50' />
                         </div>
 
                         <button type='submit' disabled={loading}
-                            className='mt-1 w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-[13px] font-medium bg-indigo-500 hover:bg-indigo-400 disabled:opacity-60 transition-colors duration-150 cursor-pointer border-none text-white'>
-                            {loading ? <><Loader2 size={14} className='animate-spin' /> Running 7 agents...</> : 'Run CareFlow AI'}
+                            className='mt-1 w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-[13px] font-medium bg-emerald-500 hover:bg-emerald-400 disabled:opacity-60 transition-colors duration-150 cursor-pointer border-none text-white'>
+                            {loading ? <><Loader2 size={14} className='animate-spin' /> Running 7 agents...</> : 'Run CarePilot Ai'}
                         </button>
                         {error && <p className='text-[12px] text-red-400'>{error}</p>}
                     </form>
@@ -116,7 +116,7 @@ function PatientPortal({ onBack }) {
                     {!result && !loading && (
                         <div className='h-full flex flex-col items-center justify-center text-slate-600 gap-2'>
                             <Stethoscope size={28} />
-                            <p className='text-[13px]'>Submit a patient case to run the CareFlow AI pipeline.</p>
+                            <p className='text-[13px]'>Submit a patient case to run the CarePilot Ai pipeline.</p>
                         </div>
                     )}
 

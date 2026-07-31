@@ -1,31 +1,47 @@
 /**
- * Hex palette for Chart.js — canvas cannot resolve CSS variables.
- * Mirrors careflow-theme.css tokens.
+ * Analytics / charts — Coolors color (not B&W).
+ * Navy · Steel · Brick · Lava
  */
 export const CHART = {
-  brand: '#4338ca',
-  brandSoft: 'rgba(67, 56, 202, 0.16)',
-  brandMuted: 'rgba(67, 56, 202, 0.08)',
-  ink: '#12161c',
-  inkSoft: '#4b5563',
-  inkFaint: '#8a93a3',
-  grid: 'rgba(148, 163, 184, 0.22)',
-  border: '#e2e5eb',
+  brand: '#003049',
+  brandSoft: 'rgba(0, 48, 73, 0.12)',
+  brandMuted: 'rgba(0, 48, 73, 0.06)',
+  accent: '#669bbc',
+  accentSoft: 'rgba(102, 155, 188, 0.22)',
+  ink: '#0a0a0b',
+  inkSoft: '#3f3f46',
+  inkFaint: '#71717a',
+  grid: 'rgba(102, 155, 188, 0.28)',
+  border: '#e4e4e7',
   surface: '#ffffff',
-  safe: '#15803d',
-  safeSoft: 'rgba(21, 128, 61, 0.14)',
-  caution: '#d97706',
-  cautionSoft: 'rgba(217, 119, 6, 0.16)',
-  danger: '#b91c1c',
-  dangerSoft: 'rgba(185, 28, 28, 0.14)',
-  shifts: ['#4338ca', '#6366f1', '#818cf8', '#a5b4fc'],
-  stages: ['#4338ca', '#15803d', '#d97706', '#b91c1c', '#6366f1', '#0f766e', '#7c3aed'],
+  safe: '#669bbc',
+  safeSoft: 'rgba(102, 155, 188, 0.2)',
+  caution: '#003049',
+  cautionSoft: 'rgba(0, 48, 73, 0.12)',
+  danger: '#c1121f',
+  dangerSoft: 'rgba(193, 18, 31, 0.12)',
+  shifts: ['#003049', '#1a4a63', '#669bbc', '#8fb4ce'],
+  stages: [
+    '#003049',
+    '#0a3d56',
+    '#1a4a63',
+    '#3d6f8a',
+    '#669bbc',
+    '#8fb4ce',
+    '#a8c9db',
+  ],
 }
 
 export const URGENCY_COLORS = {
-  routine: CHART.safe,
-  urgent: CHART.caution,
-  emergency: CHART.danger,
+  routine: '#669bbc',
+  urgent: '#003049',
+  emergency: '#c1121f',
+}
+
+export const URGENCY_SOFT = {
+  routine: 'rgba(102, 155, 188, 0.55)',
+  urgent: 'rgba(0, 48, 73, 0.65)',
+  emergency: 'rgba(193, 18, 31, 0.65)',
 }
 
 export function countUrgency(cases = []) {
@@ -46,8 +62,12 @@ export function urgencyChartData(cases = []) {
     datasets: [
       {
         data: [routine, urgent, emergency],
-        backgroundColor: [URGENCY_COLORS.routine, URGENCY_COLORS.urgent, URGENCY_COLORS.emergency],
-        hoverBackgroundColor: ['#166534', '#b45309', '#991b1b'],
+        backgroundColor: [
+          URGENCY_COLORS.routine,
+          URGENCY_COLORS.urgent,
+          URGENCY_COLORS.emergency,
+        ],
+        hoverBackgroundColor: ['#8fb4ce', '#00263a', '#780000'],
         borderWidth: 3,
         borderColor: CHART.surface,
         hoverOffset: 4,

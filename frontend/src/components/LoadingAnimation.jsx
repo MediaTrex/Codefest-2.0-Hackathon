@@ -36,8 +36,8 @@ function LoadingAnimation() {
                 }
 
                 <motion.span
-                    className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-cyan-300 to-violet-400"
-                    style={{ boxShadow: "0 0 14px rgba(125,211,252,0.55)" }}
+                    className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-emerald-300 to-emerald-600"
+                    style={{ boxShadow: "0 0 14px rgba(5,150,105,0.45)" }}
                     animate={{ scale: [1, 1.25, 1] }}
                     transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
 

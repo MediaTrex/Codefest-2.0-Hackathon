@@ -51,10 +51,10 @@ function Landing({ onPatientPortal, onDoctorDashboard }) {
         <div className='min-h-screen w-full bg-[#0d0f14] text-white'>
             {/* Nav */}
             <div className='sticky top-0 z-30 h-14 flex items-center px-6 border-b border-white/[0.06] bg-[#0d0f14]/80 backdrop-blur-md'>
-                <div className='flex items-center justify-center w-7 h-7 rounded-lg bg-indigo-500/10 border border-indigo-500/20'>
-                    <HeartPulse size={13} className='text-indigo-400' />
+                <div className='flex items-center justify-center w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20'>
+                    <HeartPulse size={13} className='text-emerald-400' />
                 </div>
-                <span className='ml-2.5 text-[14px] font-semibold tracking-tight'>CareFlow AI</span>
+                <span className='ml-2.5 text-[14px] font-semibold tracking-tight'>CarePilot Ai</span>
                 <button onClick={onDoctorDashboard}
                     className='ml-auto flex items-center gap-1.5 text-[12.5px] text-slate-400 hover:text-slate-200 bg-transparent border-none cursor-pointer'>
                     <LogIn size={13} /> Doctor Dashboard
@@ -63,7 +63,7 @@ function Landing({ onPatientPortal, onDoctorDashboard }) {
 
             {/* Hero */}
             <section className='px-6 pt-20 pb-24 max-w-4xl mx-auto text-center flex flex-col items-center'>
-                <span className='text-[11px] tracking-wide font-medium text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-3 py-1'>
+                <span className='text-[11px] tracking-wide font-medium text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1'>
                     HEALTHCARE · MULTI-AGENT SYSTEMS · TEAM METRIX
                 </span>
                 <h1 className='mt-5 text-[40px] sm:text-[52px] leading-[1.08] font-semibold tracking-tight'>
@@ -75,7 +75,7 @@ function Landing({ onPatientPortal, onDoctorDashboard }) {
                 </p>
                 <div className='mt-8 flex items-center gap-3'>
                     <button onClick={onPatientPortal}
-                        className='flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-white text-[13.5px] font-medium border-none cursor-pointer transition-colors duration-150'>
+                        className='flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white text-[13.5px] font-medium border-none cursor-pointer transition-colors duration-150'>
                         Enter Patient Portal <ArrowRight size={15} />
                     </button>
                     <button onClick={onDoctorDashboard}
@@ -118,8 +118,8 @@ function Landing({ onPatientPortal, onDoctorDashboard }) {
                     <div className='mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-3'>
                         {agents.map((a, i) => (
                             <div key={i} className='bg-[#13151c] border border-white/[0.08] rounded-2xl p-4 flex flex-col gap-2'>
-                                <div className='flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/20'>
-                                    <a.icon size={14} className='text-indigo-400' />
+                                <div className='flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20'>
+                                    <a.icon size={14} className='text-emerald-400' />
                                 </div>
                                 <p className='text-[13.5px] text-slate-100 font-medium'>{a.name}</p>
                                 <p className='text-[12px] text-slate-500 leading-relaxed'>{a.desc}</p>
@@ -142,7 +142,7 @@ function Landing({ onPatientPortal, onDoctorDashboard }) {
                         {workflow.map((w, i) => (
                             <React.Fragment key={i}>
                                 <div className='flex flex-col gap-1 bg-white/[0.03] border border-white/[0.06] rounded-xl px-4 py-3 min-w-[130px]'>
-                                    <span className='text-[10px] text-indigo-400 font-semibold'>STEP {w.step}</span>
+                                    <span className='text-[10px] text-emerald-400 font-semibold'>STEP {w.step}</span>
                                     <p className='text-[13px] text-slate-100 font-medium'>{w.title}</p>
                                     <p className='text-[11px] text-slate-500'>{w.desc}</p>
                                 </div>
@@ -163,8 +163,8 @@ function Landing({ onPatientPortal, onDoctorDashboard }) {
                     <div className='mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-3'>
                         {stack.map((s, i) => (
                             <div key={i} className='bg-[#13151c] border border-white/[0.08] rounded-2xl p-4 flex flex-col gap-2'>
-                                <div className='flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/20'>
-                                    <s.icon size={14} className='text-indigo-400' />
+                                <div className='flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20'>
+                                    <s.icon size={14} className='text-emerald-400' />
                                 </div>
                                 <p className='text-[13.5px] text-slate-100 font-medium'>{s.name}</p>
                                 <p className='text-[12px] text-slate-500 leading-relaxed'>{s.desc}</p>
@@ -208,7 +208,7 @@ function Landing({ onPatientPortal, onDoctorDashboard }) {
                 <h2 className='text-[28px] font-semibold tracking-tight'>Care that's coordinated, not fragmented.</h2>
                 <div className='mt-7 flex items-center justify-center gap-3'>
                     <button onClick={onPatientPortal}
-                        className='flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-white text-[13.5px] font-medium border-none cursor-pointer transition-colors duration-150'>
+                        className='flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white text-[13.5px] font-medium border-none cursor-pointer transition-colors duration-150'>
                         Enter Patient Portal <ArrowRight size={15} />
                     </button>
                     <button onClick={onDoctorDashboard}
@@ -216,7 +216,7 @@ function Landing({ onPatientPortal, onDoctorDashboard }) {
                         Doctor Dashboard
                     </button>
                 </div>
-                <p className='mt-10 text-[11.5px] text-slate-600'>CareFlow AI — Multi-Agent AI Care Assistant · Team MetriX</p>
+                <p className='mt-10 text-[11.5px] text-slate-600'>CarePilot Ai — Multi-Agent AI Care Assistant · Team MetriX</p>
             </section>
         </div>
     )

@@ -10,9 +10,9 @@ const BASELINE = 130
 
 const SEVERITY_AMPLITUDE = { danger: 74, caution: 48, safe: 26, idle: 16 }
 const SEVERITY_STROKE = {
-  danger: 'var(--cf-danger)',
-  caution: 'var(--cf-caution)',
-  safe: 'var(--cf-safe)',
+  danger: 'var(--cf-ink)',
+  caution: 'var(--cf-ink-soft)',
+  safe: 'var(--cf-brand)',
   idle: 'var(--cf-border-strong)',
 }
 
@@ -174,9 +174,9 @@ export default function PipelineFlowMap({ stageGroups = {}, onSelectCase }) {
       </div>
 
       <div className="flex items-center gap-4 mt-3 text-[12px] text-[var(--cf-ink-faint)]">
-        <Legend color="var(--cf-danger)" label="Emergency" />
-        <Legend color="var(--cf-caution)" label="Needs review" />
-        <Legend color="var(--cf-safe)" label="Routine" />
+        <Legend color="var(--cf-ink)" label="Emergency" />
+        <Legend color="var(--cf-ink-soft)" label="Needs review" />
+        <Legend color="var(--cf-brand)" label="Routine" />
         <span className="ml-auto">Tap a stage for detail</span>
       </div>
 

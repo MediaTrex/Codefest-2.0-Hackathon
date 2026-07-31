@@ -75,7 +75,7 @@ export function downloadExcel(c) {
     )
   }
 
-  XLSX.writeFile(wb, `CareFlow_Report_${c.caseId}.xlsx`)
+  XLSX.writeFile(wb, `CarePilot_Report_${c.caseId}.xlsx`)
 }
 
 export async function downloadPdf(caseData) {
@@ -106,5 +106,5 @@ export async function downloadPdf(caseData) {
     heightLeft -= pageHeight
   }
 
-  pdf.save(`CareFlow_Report_${caseData.caseId}.pdf`)
+  pdf.save(`CarePilot_Report_${caseData.caseId}.pdf`)
 }

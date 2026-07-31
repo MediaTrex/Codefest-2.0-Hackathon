@@ -44,7 +44,7 @@ export default function ReportDocument({ case: c }) {
   return (
     <article className="cf-report-doc" id="cf-report-doc">
       <header>
-        <p className="cf-report-brand">CareFlow AI</p>
+        <p className="cf-report-brand">CarePilot Ai</p>
         <h1>Patient Case Report</h1>
         <p className="cf-report-meta">Generated {generated}</p>
         <hr className="cf-report-rule" />
@@ -200,7 +200,7 @@ export default function ReportDocument({ case: c }) {
           Next follow-up:{' '}
           {c.nextFollowUpDate ? fmtDate(c.nextFollowUpDate) : 'Not scheduled'}
         </span>
-        <span>CareFlow AI · confidential</span>
+        <span>CarePilot Ai · confidential</span>
       </footer>
     </article>
   )

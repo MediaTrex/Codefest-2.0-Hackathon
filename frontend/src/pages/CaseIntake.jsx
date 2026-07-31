@@ -402,7 +402,7 @@ function CaseIntake() {
           <div className={`${card} flex flex-col items-center gap-3 py-10`}>
             <LoadingAnimation />
             <p className="text-[13px] text-[var(--cf-ink-faint)] text-center">
-              Running CareFlow pipeline…
+              Running CarePilot Ai pipeline…
             </p>
           </div>
         )}

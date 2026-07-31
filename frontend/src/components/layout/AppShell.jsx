@@ -7,9 +7,10 @@ const NAV_ITEMS = [
   { to: '/', id: 'command', label: 'Dashboard', end: true },
   { to: '/intake', id: 'intake', label: 'New Case' },
   { to: '/queue', id: 'queue', label: 'Case Queue' },
+  { to: '/staff', id: 'staff', label: 'Staff' },
   { to: '/reports', id: 'reports', label: 'Reports' },
   { to: '/analytics', id: 'analytics', label: 'Analytics' },
-  { to: '/death', id: 'death', label: 'Death Org' },
+  { to: '/movement', id: 'movement', label: 'Patient Movement' },
 ]
 
 function AppShell({ children }) {
@@ -47,7 +48,7 @@ function AppShell({ children }) {
               <HeartPulse size={16} className="text-white" strokeWidth={2.25} />
             </div>
             <div className="leading-tight">
-              <p className="text-[14px] font-semibold text-[var(--cf-ink)]">CareFlow AI</p>
+              <p className="text-[14px] font-semibold text-[var(--cf-ink)]">CarePilot Ai</p>
               <p className="text-[11px] text-[var(--cf-ink-faint)]">Hospital Command</p>
             </div>
           </div>
@@ -62,7 +63,7 @@ function AppShell({ children }) {
                   end={item.end}
                   className={`text-[13.5px] px-3 py-2 rounded-md font-medium transition-colors no-underline ${
                     active
-                      ? 'bg-[var(--cf-brand)] text-white'
+                      ? 'bg-[var(--cf-ink)] text-white'
                       : 'bg-transparent text-[var(--cf-ink-soft)] hover:bg-[var(--cf-surface-sunken)]'
                   }`}
                 >

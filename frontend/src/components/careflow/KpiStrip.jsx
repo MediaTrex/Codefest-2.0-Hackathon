@@ -8,10 +8,10 @@ export default function KpiStrip({ cases = [] }) {
   const openCases = cases.filter((c) => !c.topDiagnosis || c.requires_human_review).length
 
   const stats = [
-    { label: 'Cases today', value: casesToday, icon: CalendarDays, tone: 'neutral' },
-    { label: 'Needs review', value: needsReview, icon: AlertTriangle, tone: 'caution' },
-    { label: 'Active emergencies', value: activeEmergencies, icon: Siren, tone: 'danger' },
-    { label: 'Open cases', value: openCases, icon: ClipboardList, tone: 'safe' },
+    { label: 'Cases today', value: casesToday, icon: CalendarDays },
+    { label: 'Needs review', value: needsReview, icon: AlertTriangle },
+    { label: 'Active emergencies', value: activeEmergencies, icon: Siren },
+    { label: 'Open cases', value: openCases, icon: ClipboardList },
   ]
 
   return (
@@ -23,28 +23,15 @@ export default function KpiStrip({ cases = [] }) {
   )
 }
 
-const TONE_CLASSES = {
-  neutral: { bg: 'bg-[var(--cf-surface-sunken)]', text: 'text-[var(--cf-ink-soft)]' },
-  caution: { bg: 'bg-[var(--cf-caution-soft)]', text: 'text-[var(--cf-caution)]' },
-  danger: { bg: 'bg-[var(--cf-danger-soft)]', text: 'text-[var(--cf-danger-ink)]' },
-  safe: { bg: 'bg-[var(--cf-safe-soft)]', text: 'text-[var(--cf-safe)]' },
-}
-
-function StatCard({ label, value, icon: Icon, tone }) {
-  const t = TONE_CLASSES[tone]
+function StatCard({ label, value, icon: Icon }) {
   return (
-    <div className="rounded-xl border border-[var(--cf-border)] bg-[var(--cf-surface)] p-4 flex items-center gap-3">
-      <div className={`w-9 h-9 rounded-lg grid place-items-center shrink-0 ${t.bg}`}>
-        <Icon size={17} className={t.text} strokeWidth={2} />
+    <div className="rounded-xl border border-[var(--cf-border)] bg-[var(--cf-surface)] p-4 flex items-center gap-3 transition-shadow duration-300 hover:shadow-sm">
+      <div className="w-9 h-9 rounded-lg grid place-items-center shrink-0 bg-[var(--cf-surface-sunken)] text-[var(--cf-ink-soft)]">
+        <Icon size={17} strokeWidth={2} />
       </div>
       <div>
         <p className="text-[13px] text-[var(--cf-ink-faint)]">{label}</p>
-        <p
-          className="text-[22px] leading-none font-semibold text-[var(--cf-ink)] mt-1"
-          style={{ fontFamily: 'var(--cf-font-mono)' }}
-        >
-          {value}
-        </p>
+        <p className="text-[22px] leading-none font-semibold text-[var(--cf-ink)] mt-1">{value}</p>
       </div>
     </div>
   )

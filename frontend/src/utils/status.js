@@ -1,5 +1,6 @@
 /**
- * Shared status/severity helpers.
+ * Shared status/severity helpers — B&W chrome; weight carries meaning.
+ * Colored urgency reserved for charts / twin via hex palettes.
  */
 
 export function severityOf(caseItem) {
@@ -12,24 +13,24 @@ export function severityOf(caseItem) {
 
 const TONE_MAP = {
   danger: {
-    text: 'text-[var(--cf-danger-ink)]',
-    bg: 'bg-[var(--cf-danger-soft)]',
-    border: 'border-[var(--cf-danger-border)]',
-    dot: 'bg-[var(--cf-danger)]',
+    text: 'text-[var(--cf-ink)]',
+    bg: 'bg-[var(--cf-surface-sunken)]',
+    border: 'border-[var(--cf-border-strong)]',
+    dot: 'bg-[var(--cf-ink)]',
     label: 'Emergency',
   },
   caution: {
-    text: 'text-[var(--cf-caution)]',
-    bg: 'bg-[var(--cf-caution-soft)]',
-    border: 'border-[var(--cf-caution-border)]',
-    dot: 'bg-[var(--cf-caution)]',
+    text: 'text-[var(--cf-ink-soft)]',
+    bg: 'bg-[var(--cf-surface-sunken)]',
+    border: 'border-[var(--cf-border)]',
+    dot: 'bg-[var(--cf-ink-soft)]',
     label: 'Needs review',
   },
   safe: {
-    text: 'text-[var(--cf-safe)]',
-    bg: 'bg-[var(--cf-safe-soft)]',
-    border: 'border-[var(--cf-safe-border)]',
-    dot: 'bg-[var(--cf-safe)]',
+    text: 'text-[var(--cf-ink-soft)]',
+    bg: 'bg-[var(--cf-surface)]',
+    border: 'border-[var(--cf-border)]',
+    dot: 'bg-[var(--cf-ink-faint)]',
     label: 'Routine',
   },
   idle: {
@@ -41,71 +42,61 @@ const TONE_MAP = {
   },
 }
 
-/** Object tone styles for feed / pipeline map badges. */
 export function severityTone(level) {
   return TONE_MAP[level] || TONE_MAP.idle
 }
 
-/** Alias used by careflow-ui components. */
 export function severityClasses(levelOrSeverity) {
-  // Medication warning severities from CaseReport (string of utility classes)
   const med = (levelOrSeverity || '').toLowerCase()
   if (med === 'high' || med === 'moderate' || med === 'low' || med === '') {
     switch (med) {
       case 'high':
-        return 'text-red-600 bg-red-50 border-red-200'
+        return 'text-[var(--cf-ink)] bg-[var(--cf-surface-sunken)] border-[var(--cf-border-strong)]'
       case 'moderate':
-        return 'text-amber-600 bg-amber-50 border-amber-200'
+        return 'text-[var(--cf-ink-soft)] bg-[var(--cf-surface-sunken)] border-[var(--cf-border)]'
       default:
-        return 'text-slate-600 bg-slate-50 border-slate-200'
+        return 'text-[var(--cf-ink-faint)] bg-[var(--cf-surface)] border-[var(--cf-border)]'
     }
   }
-  // Pipeline tone object
   return TONE_MAP[levelOrSeverity] || TONE_MAP.idle
 }
 
 export function urgencyClasses(urgency) {
   switch ((urgency || '').toLowerCase()) {
     case 'emergency':
-      return 'text-red-600 bg-red-50 border-red-200'
+      return 'text-[var(--cf-ink)] bg-[var(--cf-surface-sunken)] border-[var(--cf-border-strong)] font-semibold'
     case 'urgent':
-      return 'text-amber-600 bg-amber-50 border-amber-200'
+      return 'text-[var(--cf-ink-soft)] bg-[var(--cf-surface-sunken)] border-[var(--cf-border)]'
     default:
-      return 'text-emerald-600 bg-emerald-50 border-emerald-200'
+      return 'text-[var(--cf-ink-faint)] bg-[var(--cf-surface)] border-[var(--cf-border)]'
   }
 }
 
 export function urgencyDotClass(urgency) {
   switch ((urgency || '').toLowerCase()) {
     case 'emergency':
-      return 'bg-red-500'
+      return 'bg-[var(--cf-ink)]'
     case 'urgent':
-      return 'bg-amber-500'
+      return 'bg-[var(--cf-ink-soft)]'
     default:
-      return 'bg-emerald-500'
+      return 'bg-[var(--cf-ink-faint)]'
   }
 }
 
 export function heatClasses(level) {
   switch (level) {
     case 'high':
-      return 'text-red-600 bg-red-50 border-red-200'
+      return 'text-[var(--cf-ink)] bg-[var(--cf-surface-sunken)] border-[var(--cf-border-strong)]'
     case 'medium':
-      return 'text-amber-600 bg-amber-50 border-amber-200'
+    case 'mid':
+      return 'text-[var(--cf-ink-soft)] bg-[var(--cf-surface-sunken)] border-[var(--cf-border)]'
     case 'low':
-      return 'text-emerald-600 bg-emerald-50 border-emerald-200'
+      return 'text-[var(--cf-ink-faint)] bg-[var(--cf-surface)] border-[var(--cf-border)]'
     default:
-      return 'text-slate-500 bg-slate-50 border-slate-200'
+      return 'text-[var(--cf-ink-faint)] bg-[var(--cf-surface-sunken)] border-[var(--cf-border)]'
   }
 }
 
-export function urgencyLabel(urgency) {
-  if ((urgency || '').toLowerCase() === 'emergency') return 'Emergency'
-  if ((urgency || '').toLowerCase() === 'urgent') return 'Urgent'
-  return 'Routine'
-}
-
-/** AI confidence 0–100 → caution (<60) or safe (≥60), using shared tone map. */
 export function confidenceTone(score) {
   const n = Number(score)
   if (!Number.isFinite(n)) return severityTone('idle')
@@ -117,15 +108,32 @@ export function confidenceBadgeClass(score) {
   return `${tone.text} ${tone.bg} ${tone.border}`
 }
 
-export { timeAgo } from './pipelineStage'
+export function urgencyLabel(urgency) {
+  const u = (urgency || 'routine').toLowerCase()
+  if (u === 'emergency') return 'Emergency'
+  if (u === 'urgent') return 'Urgent'
+  return 'Routine'
+}
 
-export function isToday(isoString) {
-  if (!isoString) return false
-  const d = new Date(isoString)
-  const now = new Date()
+export function timeAgo(iso) {
+  if (!iso) return ''
+  const ms = Date.now() - new Date(iso).getTime()
+  const m = Math.floor(ms / 60000)
+  if (m < 1) return 'just now'
+  if (m < 60) return `${m}m ago`
+  const h = Math.floor(m / 60)
+  if (h < 24) return `${h}h ago`
+  const d = Math.floor(h / 24)
+  return `${d}d ago`
+}
+
+export function isToday(iso) {
+  if (!iso) return false
+  const d = new Date(iso)
+  const n = new Date()
   return (
-    d.getFullYear() === now.getFullYear() &&
-    d.getMonth() === now.getMonth() &&
-    d.getDate() === now.getDate()
+    d.getFullYear() === n.getFullYear() &&
+    d.getMonth() === n.getMonth() &&
+    d.getDate() === n.getDate()
   )
 }

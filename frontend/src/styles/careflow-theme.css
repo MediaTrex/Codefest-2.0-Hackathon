@@ -1,42 +1,37 @@
 /*
- * CareFlow AI — design tokens
- * Flat, clinical palette. No gradients, no glow, no glossy fills.
- * Red/green are semantic (state), never decorative.
+ * CareFlow AI — black & white UI shell.
+ * Charts / Digital Twin keep their own color palettes in component code.
  */
 :root {
-  /* surfaces */
-  --cf-bg: #f5f6f8;
+  --cf-bg: #f4f4f5;
   --cf-surface: #ffffff;
-  --cf-surface-sunken: #eef0f3;
-  --cf-border: #e2e5eb;
-  --cf-border-strong: #cbd1da;
+  --cf-surface-sunken: #f0f0f1;
+  --cf-border: #e4e4e7;
+  --cf-border-strong: #a1a1aa;
 
-  /* ink */
-  --cf-ink: #12161c;
-  --cf-ink-soft: #4b5563;
-  --cf-ink-faint: #8a93a3;
+  --cf-ink: #0a0a0b;
+  --cf-ink-soft: #3f3f46;
+  --cf-ink-faint: #71717a;
 
-  /* brand — used sparingly: logo mark, active nav, primary buttons only */
-  --cf-brand: #4338ca;
-  --cf-brand-soft: #edecfb;
+  /* brand = black for chrome (nav, buttons, logos) */
+  --cf-brand: #0a0a0b;
+  --cf-brand-soft: #f0f0f1;
+  --cf-accent: #3f3f46;
+  --cf-accent-soft: #f4f4f5;
 
-  /* semantic: danger (emergency / critical) */
-  --cf-danger: #b91c1c;
-  --cf-danger-ink: #7f1d1d;
-  --cf-danger-soft: #fbeceb;
-  --cf-danger-border: #eec2c0;
+  --cf-danger: #0a0a0b;
+  --cf-danger-ink: #0a0a0b;
+  --cf-danger-soft: #f0f0f1;
+  --cf-danger-border: #a1a1aa;
 
-  /* semantic: caution (needs review / moderate) */
-  --cf-caution: #92400e;
-  --cf-caution-soft: #fbf1e3;
-  --cf-caution-border: #edd6ae;
+  --cf-caution: #3f3f46;
+  --cf-caution-soft: #f4f4f5;
+  --cf-caution-border: #d4d4d8;
 
-  /* semantic: safe (routine / healthy) */
-  --cf-safe: #15803d;
-  --cf-safe-soft: #eaf6ee;
-  --cf-safe-border: #bfe2cb;
+  --cf-safe: #71717a;
+  --cf-safe-soft: #fafafa;
+  --cf-safe-border: #e4e4e7;
 
-  /* type */
-  --cf-font-ui: 'Inter', 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --cf-font-mono: 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, monospace;
+  --cf-font-ui: 'IBM Plex Sans', 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --cf-font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 }

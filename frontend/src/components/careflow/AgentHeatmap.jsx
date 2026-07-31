@@ -56,7 +56,7 @@ function AgentHeatmap({ cases = [] }) {
               className={`rounded-xl border px-3 py-2.5 flex items-center gap-2.5 ${heatClasses(level)}`}
             >
               <div className="flex items-center justify-center w-7 h-7 rounded-lg bg-white/70 border border-inherit shrink-0">
-                <Icon size={13} className="text-indigo-600" />
+                <Icon size={13} className="text-[var(--cf-ink-soft)]" />
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-[12px] font-medium truncate">{short}</p>

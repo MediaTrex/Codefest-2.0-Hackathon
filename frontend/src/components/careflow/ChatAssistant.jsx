@@ -9,7 +9,7 @@ const SUGGESTIONS = [
 ]
 
 /**
- * Floating "Ask CareFlow" assistant.
+ * Floating "Ask CarePilot" assistant.
  *
  * This ships with a small local answer engine that inspects the `cases`
  * prop directly — no network call, no hallucination risk, works offline.
@@ -47,10 +47,10 @@ export default function ChatAssistant({ cases = [], stageGroups = {}, onSelectCa
       <button
         onClick={() => setOpen(true)}
         className="fixed bottom-5 right-5 z-40 flex items-center gap-2 rounded-full bg-[var(--cf-brand)] text-white pl-4 pr-5 py-3 shadow-none border border-[var(--cf-brand)]"
-        aria-label="Open CareFlow assistant"
+        aria-label="Open CarePilot assistant"
       >
         <MessageSquare size={16} />
-        <span className="text-[13px] font-medium">Ask CareFlow</span>
+        <span className="text-[13px] font-medium">Ask CarePilot</span>
       </button>
 
       {open && (
@@ -67,7 +67,7 @@ export default function ChatAssistant({ cases = [], stageGroups = {}, onSelectCa
                   <Stethoscope size={14} className="text-[var(--cf-brand)]" />
                 </div>
                 <div>
-                  <p className="text-[13px] font-semibold text-[var(--cf-ink)]">CareFlow Assistant</p>
+                  <p className="text-[13px] font-semibold text-[var(--cf-ink)]">CarePilot Assistant</p>
                   <p className="text-[11.5px] text-[var(--cf-ink-faint)]">Reads live case data only</p>
                 </div>
               </div>

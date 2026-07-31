@@ -52,11 +52,11 @@ function DoctorDashboard({ onBack }) {
                 <button onClick={onBack} className='flex items-center justify-center w-8 h-8 rounded-lg text-slate-500 hover:text-slate-200 hover:bg-white/[0.05] bg-transparent border-none cursor-pointer'>
                     <ArrowLeft size={15} />
                 </button>
-                <div className='flex items-center justify-center w-7 h-7 rounded-lg bg-indigo-500/10 border border-indigo-500/20'>
-                    <Stethoscope size={13} className='text-indigo-400' />
+                <div className='flex items-center justify-center w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20'>
+                    <Stethoscope size={13} className='text-emerald-400' />
                 </div>
                 <div className='text-[14px] font-semibold text-slate-100 tracking-tight'>Doctor Dashboard</div>
-                <span className='text-[10px] font-medium text-slate-600 bg-white/[0.04] border border-white/[0.06] px-2 py-0.5 rounded-full'>CareFlow AI</span>
+                <span className='text-[10px] font-medium text-slate-600 bg-white/[0.04] border border-white/[0.06] px-2 py-0.5 rounded-full'>CarePilot Ai</span>
                 <button onClick={loadCases} className='ml-auto flex items-center gap-1.5 text-[12px] text-slate-400 hover:text-slate-200 bg-transparent border-none cursor-pointer'>
                     <RefreshCw size={13} className={loadingList ? 'animate-spin' : ''} /> Refresh
                 </button>
@@ -75,7 +75,7 @@ function DoctorDashboard({ onBack }) {
                     )}
                     {cases.map((c) => (
                         <button key={c.caseId} onClick={() => openCase(c.caseId)}
-                            className={`text-left w-full rounded-xl p-3 border cursor-pointer transition-colors duration-150 ${selectedId === c.caseId ? 'bg-indigo-500/10 border-indigo-500/30' : 'bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.04]'}`}>
+                            className={`text-left w-full rounded-xl p-3 border cursor-pointer transition-colors duration-150 ${selectedId === c.caseId ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.04]'}`}>
                             <div className='flex items-center justify-between gap-2'>
                                 <p className='text-[13px] text-slate-100 font-medium truncate'>{c.patientName}</p>
                                 <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${urgencyDot(c.urgency)}`} />
@@ -98,7 +98,7 @@ function DoctorDashboard({ onBack }) {
                     {!selectedId && (
                         <div className='h-full flex flex-col items-center justify-center text-slate-600 gap-2'>
                             <ChevronRight size={24} />
-                            <p className='text-[13px]'>Select a case from the list to view the full CareFlow AI report.</p>
+                            <p className='text-[13px]'>Select a case from the list to view the full CarePilot Ai report.</p>
                         </div>
                     )}
                     {selectedId && loadingCase && (

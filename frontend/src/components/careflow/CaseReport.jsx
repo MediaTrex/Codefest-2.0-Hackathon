@@ -19,8 +19,8 @@ export function Section({ icon: Icon, title, children, right }) {
     <div className="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col gap-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="flex items-center justify-center w-7 h-7 rounded-lg bg-indigo-50 border border-indigo-200">
-            <Icon size={13} className="text-indigo-600" />
+          <div className="flex items-center justify-center w-7 h-7 rounded-lg bg-[var(--cf-surface-sunken)] border border-[var(--cf-border)]">
+            <Icon size={13} className="text-[var(--cf-ink-soft)]" />
           </div>
           <h3 className="text-[13px] font-semibold text-slate-900 tracking-tight">{title}</h3>
         </div>
@@ -54,9 +54,9 @@ function CaseReport({ result }) {
           {(result.timeline || []).map((step, i) => (
             <div key={i} className="flex items-start gap-2">
               {step.status === 'completed' ? (
-                <CheckCircle2 size={14} className="text-emerald-600 mt-0.5 shrink-0" />
+                <CheckCircle2 size={14} className="text-[var(--cf-ink-soft)] mt-0.5 shrink-0" />
               ) : (
-                <XCircle size={14} className="text-red-600 mt-0.5 shrink-0" />
+                <XCircle size={14} className="text-[var(--cf-ink)] mt-0.5 shrink-0" />
               )}
               <div>
                 <p className="text-[12.5px] text-slate-800 font-medium">{step.agent}</p>
@@ -116,7 +116,7 @@ function CaseReport({ result }) {
 
       <Section icon={ShieldAlert} title="Medication Safety">
         {(result.interaction_warnings || []).length === 0 && (
-          <p className="text-[12.5px] text-emerald-600 flex items-center gap-1.5">
+          <p className="text-[12.5px] text-[var(--cf-ink-soft)] flex items-center gap-1.5">
             <CheckCircle2 size={13} /> No medication safety issues detected.
           </p>
         )}
@@ -143,7 +143,7 @@ function CaseReport({ result }) {
             <p className="text-[11px] text-slate-500 mb-1">Likely covered</p>
             <div className="flex flex-wrap gap-1.5">
               {result.insurance_summary.likely_covered.map((t, i) => (
-                <Tag key={i} className="text-emerald-600 bg-emerald-50 border-emerald-200">
+                <Tag key={i} className="text-[var(--cf-ink-soft)] bg-[var(--cf-surface-sunken)] border-[var(--cf-border)]">
                   {t}
                 </Tag>
               ))}
@@ -200,7 +200,7 @@ function CaseReport({ result }) {
             onClick={() => setTab('patient')}
             className={`text-[11.5px] px-2.5 py-1 rounded-full border cursor-pointer ${
               tab === 'patient'
-                ? 'bg-indigo-50 border-indigo-200 text-indigo-700'
+                ? 'bg-[var(--cf-surface-sunken)] border-[var(--cf-border)] text-[var(--cf-ink)]'
                 : 'bg-transparent border-slate-200 text-slate-500'
             }`}
           >
@@ -211,7 +211,7 @@ function CaseReport({ result }) {
             onClick={() => setTab('doctor')}
             className={`text-[11.5px] px-2.5 py-1 rounded-full border cursor-pointer ${
               tab === 'doctor'
-                ? 'bg-indigo-50 border-indigo-200 text-indigo-700'
+                ? 'bg-[var(--cf-surface-sunken)] border-[var(--cf-border)] text-[var(--cf-ink)]'
                 : 'bg-transparent border-slate-200 text-slate-500'
             }`}
           >
