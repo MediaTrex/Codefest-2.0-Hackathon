@@ -25,14 +25,14 @@
 
 <table>
   <tr>
-    <td align="center"><img src="./assets/screenshots/web/1.jpeg" width="600" alt="Login"><br><strong>1. Login</strong></td>
-    <td align="center"><img src="./assets/screenshots/web/2.jpeg" width="600" alt="Dashboard"><br><strong>2. Dashboard</strong></td>
-    <td align="center"><img src="./assets/screenshots/web/3.jpeg" width="600" alt="Live Monitoring"><br><strong>3. Live Monitoring</strong></td>
+    <td align="center"><img src="./assets/screenshots/web/1.jpeg" width="600" alt="Login"><br></td>
+    <td align="center"><img src="./assets/screenshots/web/2.jpeg" width="600" alt="Dashboard"><br></td>
+    <td align="center"><img src="./assets/screenshots/web/3.jpeg" width="600" alt="Live Monitoring"><br></td>
   </tr>
   <tr>
-    <td align="center"><img src="./assets/screenshots/web/4.jpeg" width="600" alt="Analytics"><br><strong>5. Analytics</strong></td>
-    <td align="center"><img src="./assets/screenshots/web/5.jpeg" width="600" alt="Alerts"><br><strong>6. Alerts</strong></td>
-    <td align="center"><img src="./assets/screenshots/web/7.jpeg" width="600" alt="Reports"><br><strong>7. Reports</strong></td>
+    <td align="center"><img src="./assets/screenshots/web/4.jpeg" width="600" alt="Analytics"><br></td>
+    <td align="center"><img src="./assets/screenshots/web/5.jpeg" width="600" alt="Alerts"><br></td>
+    <td align="center"><img src="./assets/screenshots/web/7.jpeg" width="600" alt="Reports"><br><strong><a href="./assets/screenshots/web">more..</a></strong></td>
   </tr>
 </table>
 
