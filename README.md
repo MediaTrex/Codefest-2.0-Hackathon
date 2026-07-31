@@ -1,4 +1,4 @@
-# CareFlow AI: Multi-Agent AI Care Assistant
+# CarePilot AI: Multi-Agent AI Care Assistant
 
 ![Project Banner](./assets/banner.png) 
 
@@ -21,7 +21,7 @@
 
 ## Project Screenshots
 
-### CareFlow AI - Complete UI Overview
+### CarePilot AI - Complete UI Overview
 
 <table>
   <tr>
@@ -121,7 +121,7 @@ Our system is **not designed to replace healthcare professionals**. Instead, it 
 
 ## Live Demo
 
-[CareFlow AI Demo Video link](https://drive.google.com/file/d/18k31h3aEPSvc5uT7_2tIN_J6h4u0wNKg/view?usp=sharing)
+[CarePilot AI Demo Video link](https://drive.google.com/file/d/1R3agz3OKhA4Wml6yTrUIiPG49TDdf9kc/view?usp=drive_link)
 
 ## How to Run
 ```bash
@@ -475,6 +475,6 @@ Documention Links: <br/>
 ---
 ## Conclusion
 
-**CareFlow AI** demonstrates how **Multi-Agent AI** can transform fragmented healthcare into a connected, intelligent, and patient-centric ecosystem. By combining specialized AI agents, evidence-based reasoning, and explainable recommendations, the platform empowers healthcare professionals to make faster, safer, and more informed clinical decisions—while keeping humans at the center of care.
+**CarePilot AI** demonstrates how **Multi-Agent AI** can transform fragmented healthcare into a connected, intelligent, and patient-centric ecosystem. By combining specialized AI agents, evidence-based reasoning, and explainable recommendations, the platform empowers healthcare professionals to make faster, safer, and more informed clinical decisions—while keeping humans at the center of care.
 
 *An intelligent, transparent, and scalable foundation for the future of digital healthcare.*
