@@ -32,7 +32,7 @@
   <tr>
     <td align="center"><img src="./assets/screenshots/web/4.jpeg" width="600" alt="Analytics"><br></td>
     <td align="center"><img src="./assets/screenshots/web/5.jpeg" width="600" alt="Alerts"><br></td>
-    <td align="center"><img src="./assets/screenshots/web/7.jpeg" width="600" alt="Reports"><br><strong><a href="./assets/screenshots/web">more..</a></strong></td>
+    <td align="center"><img src="./assets/screenshots/web/7.jpeg" width="600" alt="Reports"><br><strong><a href="./assets/screenshots/web">more...</a></strong></td>
   </tr>
 </table>
 
@@ -113,11 +113,11 @@ Our system is **not designed to replace healthcare professionals**. Instead, it 
 - Improves operational efficiency across healthcare organizations
 ---
 
-## Project Demo
+## Project Demo Gif
 
 ![UI Walkthrough](./assets/screenshots/demo-updated.gif)
 
-## Live Demo
+## Live Demo Video
 
 [CarePilot AI Demo Video link](https://drive.google.com/file/d/1R3agz3OKhA4Wml6yTrUIiPG49TDdf9kc/view?usp=drive_link)
 
