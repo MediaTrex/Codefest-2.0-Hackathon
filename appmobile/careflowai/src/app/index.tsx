@@ -97,15 +97,31 @@ export default function Index() {
 
     setMessages((prev) => [...prev, userMessage]);
 
-    setTimeout(() => {
-      const botMessage = {
-        id: (Date.now() + 1).toString(),
-        text: "I'm still learning :)",
-        sender: "bot",
-      };
+   setTimeout(() => {
+  const botMessage = {
+    id: (Date.now() + 1).toString(),
+    text: `Thank you for sharing your symptoms. I understand that feeling unwell can be uncomfortable and concerning.
 
-      setMessages((prev) => [...prev, botMessage]);
-    }, 700);
+Based on the information provided, your symptoms may have several possible causes and cannot be accurately diagnosed without a medical evaluation.
+
+Please make sure to rest, stay well hydrated, and eat light, nutritious meals if possible.
+
+Monitor your symptoms closely and note any changes in their severity or duration.
+
+Avoid self-medicating unless you are following instructions from a healthcare professional or using medicines as directed on their labels.
+
+If your symptoms worsen, persist, or interfere with your daily activities, consider consulting a qualified healthcare provider.
+
+Seek immediate medical attention if you experience severe pain, difficulty breathing, confusion, persistent vomiting, chest pain, or any other alarming symptoms.
+
+Keeping track of when your symptoms began and any possible triggers may be helpful during a medical consultation.
+
+Take care of yourself, and don't hesitate to seek professional medical advice if you are concerned about your condition.`,
+    sender: "bot",
+  };
+
+  setMessages((prev) => [...prev, botMessage]);
+}, 1000);
 
     setMessage("");
   };
