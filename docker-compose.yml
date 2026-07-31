@@ -1,0 +1,166 @@
+version: "3.8"
+
+services:
+  # Database & Cache
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    networks:
+      - careflow-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mongo:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    restart: unless-stopped
+    networks:
+      - careflow-network
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Backend Services
+  auth:
+    build:
+      context: ./backend
+      dockerfile: services/auth/Dockerfile
+    ports:
+      - "8001:8001"
+    environment:
+      - PORT=8001
+      - MONGODB_URI=mongodb://mongo:27017/careflow-auth
+      - REDIS_URL=redis://redis:6379
+      # Firebase - mount service account key as volume if available
+      # - GOOGLE_APPLICATION_CREDENTIALS=/app/serviceAccountKey.json
+    volumes:
+      - ./backend/services/auth/serviceAccountKey.json:/app/services/auth/serviceAccountKey.json:ro
+    depends_on:
+      - mongo
+      - redis
+    restart: unless-stopped
+    networks:
+      - careflow-network
+
+  agent:
+    build:
+      context: ./backend
+      dockerfile: services/agent/Dockerfile
+    ports:
+      - "8003:8003"
+    environment:
+      - PORT=8003
+      - REDIS_URL=redis://redis:6379
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - GOOGLE_GENAI_API_KEY=${GOOGLE_GENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    depends_on:
+      - redis
+    restart: unless-stopped
+    networks:
+      - careflow-network
+
+  billing:
+    build:
+      context: ./backend
+      dockerfile: services/billing/Dockerfile
+    ports:
+      - "8004:8004"
+    environment:
+      - PORT=8004
+      - MONGODB_URI=mongodb://mongo:27017/careflow-billing
+      - RAZORPAY_KEY_ID=${RAZORPAY_KEY_ID}
+      - RAZORPAY_KEY_SECRET=${RAZORPAY_KEY_SECRET}
+    depends_on:
+      - mongo
+      - redis
+    restart: unless-stopped
+    networks:
+      - careflow-network
+
+  gateway:
+    build:
+      context: ./backend
+      dockerfile: gateway/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - FRONTEND_URL=http://localhost:5173
+      - AUTH_SERVICE=http://auth:8001
+      - AGENT_SERVICE=http://agent:8003
+      - BILLING_SERVICE=http://billing:8004
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - auth
+      - agent
+      - billing
+      - redis
+    restart: unless-stopped
+    networks:
+      - careflow-network
+
+  # Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - gateway
+    restart: unless-stopped
+    networks:
+      - careflow-network
+    volumes:
+      # Mount source for hot-reload during development
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+      - ./frontend/index.html:/app/index.html
+
+  # Mobile App (Expo)
+  appmobile:
+    build:
+      context: ./appmobile/careflowai
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081" # Metro bundler
+      - "19000:19000" # Expo dev server
+      - "19001:19001" # Expo dev server fallback
+      - "19002:19002" # Expo dev tools
+    environment:
+      - EXPO_DEVTOOLS_LISTEN_ADDRESS=0.0.0.0
+      - REACT_NATIVE_PACKAGER_HOSTNAME=localhost
+    depends_on:
+      - gateway
+    restart: unless-stopped
+    networks:
+      - careflow-network
+    volumes:
+      # Mount source for hot-reload during development
+      - ./appmobile/careflowai/src:/app/src
+      - ./appmobile/careflowai/assets:/app/assets
+      - ./appmobile/careflowai/app.json:/app/app.json
+# Networks & Volume
+networks:
+  careflow-network:
+    driver: bridge
+
+volumes:
+  redis_data:
+  mongo_data:
+
