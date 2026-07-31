@@ -44,7 +44,24 @@ export default function ReportDocument({ case: c }) {
   return (
     <article className="cf-report-doc" id="cf-report-doc">
       <header>
-        <p className="cf-report-brand">CarePilot Ai</p>
+        <div className="cf-report-brand-row">
+          <svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true">
+            <rect width="32" height="32" rx="7" fill="#0a0a0b" />
+            <path
+              d="M16 6.5L24.2 22.4h-4.6L16 15.2l-3.6 7.2H7.8L16 6.5z"
+              fill="#fff"
+            />
+            <path
+              d="M9 25.2h3.2l1.2-2.4 1.6 4.2 1.4-3.2H23"
+              fill="none"
+              stroke="#fff"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <p className="cf-report-brand">CarePilot Ai</p>
+        </div>
         <h1>Patient Case Report</h1>
         <p className="cf-report-meta">Generated {generated}</p>
         <hr className="cf-report-rule" />

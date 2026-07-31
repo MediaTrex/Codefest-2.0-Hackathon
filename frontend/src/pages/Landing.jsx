@@ -1,8 +1,9 @@
 import React from 'react'
 import {
-    HeartPulse, ClipboardList, FileText, Stethoscope, ShieldAlert, ShieldCheck,
+    ClipboardList, FileText, Stethoscope, ShieldAlert, ShieldCheck,
     Pill, Brain, ArrowRight, Network, Sparkles, GitBranch, Database, LogIn
 } from 'lucide-react'
+import CarePilotLogo from '../components/CarePilotLogo'
 
 const problems = [
     'Delayed clinical decisions',
@@ -51,9 +52,7 @@ function Landing({ onPatientPortal, onDoctorDashboard }) {
         <div className='min-h-screen w-full bg-[#0d0f14] text-white'>
             {/* Nav */}
             <div className='sticky top-0 z-30 h-14 flex items-center px-6 border-b border-white/[0.06] bg-[#0d0f14]/80 backdrop-blur-md'>
-                <div className='flex items-center justify-center w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20'>
-                    <HeartPulse size={13} className='text-emerald-400' />
-                </div>
+                <CarePilotLogo size={28} variant="mark" className="text-emerald-400" />
                 <span className='ml-2.5 text-[14px] font-semibold tracking-tight'>CarePilot Ai</span>
                 <button onClick={onDoctorDashboard}
                     className='ml-auto flex items-center gap-1.5 text-[12.5px] text-slate-400 hover:text-slate-200 bg-transparent border-none cursor-pointer'>

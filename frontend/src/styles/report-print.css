@@ -37,12 +37,19 @@
   margin-bottom: 8px;
 }
 
+.cf-report-doc .cf-report-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
 .cf-report-doc .cf-report-brand {
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 10pt;
   font-weight: 600;
   color: #333;
-  margin-bottom: 2px;
+  margin: 0;
 }
 
 .cf-report-doc .cf-report-rule {

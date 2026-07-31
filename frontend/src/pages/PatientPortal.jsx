@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { ArrowLeft, HeartPulse, Loader2, Stethoscope, User } from 'lucide-react'
+import { ArrowLeft, Loader2, Stethoscope, User } from 'lucide-react'
+import CarePilotLogo from '../components/CarePilotLogo'
 import { submitCase } from '../features/careflow/submitCase'
 import CaseReport from '../components/careflow/CaseReport'
 import LoadingAnimation from '../components/LoadingAnimation'
@@ -52,9 +53,7 @@ function PatientPortal({ onBack }) {
                 <button onClick={onBack} className='flex items-center justify-center w-8 h-8 rounded-lg text-slate-500 hover:text-slate-200 hover:bg-white/[0.05] bg-transparent border-none cursor-pointer'>
                     <ArrowLeft size={15} />
                 </button>
-                <div className='flex items-center justify-center w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20'>
-                    <HeartPulse size={13} className='text-emerald-400' />
-                </div>
+                <CarePilotLogo size={28} variant="mark" className="text-emerald-400" />
                 <div className='text-[14px] font-semibold text-slate-100 tracking-tight'>Patient Portal</div>
                 <span className='text-[10px] font-medium text-slate-600 bg-white/[0.04] border border-white/[0.06] px-2 py-0.5 rounded-full'>CarePilot Ai</span>
             </div>

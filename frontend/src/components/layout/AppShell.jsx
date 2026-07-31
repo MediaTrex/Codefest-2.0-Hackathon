@@ -1,7 +1,8 @@
 import React from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
-import { HeartPulse, Bell } from 'lucide-react'
+import { Bell } from 'lucide-react'
 import { useSelector } from 'react-redux'
+import CarePilotLogo from '../CarePilotLogo'
 
 const NAV_ITEMS = [
   { to: '/', id: 'command', label: 'Dashboard', end: true },
@@ -44,9 +45,7 @@ function AppShell({ children }) {
       <header className="border-b border-[var(--cf-border)] bg-[var(--cf-surface)] shrink-0 no-print">
         <div className="max-w-[1400px] mx-auto px-6 h-16 flex items-center gap-8">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-md bg-[var(--cf-brand)] grid place-items-center">
-              <HeartPulse size={16} className="text-white" strokeWidth={2.25} />
-            </div>
+            <CarePilotLogo size={32} className="shrink-0 rounded-md" />
             <div className="leading-tight">
               <p className="text-[14px] font-semibold text-[var(--cf-ink)]">CarePilot Ai</p>
               <p className="text-[11px] text-[var(--cf-ink-faint)]">Hospital Command</p>

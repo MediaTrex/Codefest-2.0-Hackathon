@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
-import { MessageSquare, X, Send, Stethoscope } from 'lucide-react'
+import { MessageSquare, X, Send } from 'lucide-react'
+import CarePilotLogo from '../CarePilotLogo'
 import { isToday } from '../../utils/status'
 
 const SUGGESTIONS = [
@@ -63,9 +64,7 @@ export default function ChatAssistant({ cases = [], stageGroups = {}, onSelectCa
           <div className="relative w-full max-w-sm h-full bg-[var(--cf-surface)] border-l border-[var(--cf-border)] flex flex-col">
             <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--cf-border)]">
               <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-md bg-[var(--cf-brand-soft)] grid place-items-center">
-                  <Stethoscope size={14} className="text-[var(--cf-brand)]" />
-                </div>
+                <CarePilotLogo size={28} />
                 <div>
                   <p className="text-[13px] font-semibold text-[var(--cf-ink)]">CarePilot Assistant</p>
                   <p className="text-[11.5px] text-[var(--cf-ink-faint)]">Reads live case data only</p>
