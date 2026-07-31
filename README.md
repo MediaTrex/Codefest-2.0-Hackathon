@@ -25,16 +25,14 @@
 
 <table>
   <tr>
-    <td align="center"><img src="./docs/images/Login.jpeg" width="245" alt="Login"><br><strong>1. Login</strong></td>
-    <td align="center"><img src="./docs/images/Dashboard.jpeg" width="245" alt="Dashboard"><br><strong>2. Dashboard</strong></td>
-    <td align="center"><img src="./docs/images/Live_monitoring.jpeg" width="245" alt="Live Monitoring"><br><strong>3. Live Monitoring</strong></td>
-    <td align="center"><img src="./docs/images/heatmap.jpeg" width="245" alt="Heatmap"><br><strong>4. Heatmap</strong></td>
+    <td align="center"><img src="./assets/screenshots/web/1.jpeg" width="600" alt="Login"><br><strong>1. Login</strong></td>
+    <td align="center"><img src="./assets/screenshots/web/2.jpeg" width="600" alt="Dashboard"><br><strong>2. Dashboard</strong></td>
+    <td align="center"><img src="./assets/screenshots/web/3.jpeg" width="600" alt="Live Monitoring"><br><strong>3. Live Monitoring</strong></td>
   </tr>
   <tr>
-    <td align="center"><img src="./docs/images/Analytics.jpeg" width="245" alt="Analytics"><br><strong>5. Analytics</strong></td>
-    <td align="center"><img src="./docs/images/Alerts.jpeg" width="245" alt="Alerts"><br><strong>6. Alerts</strong></td>
-    <td align="center"><img src="./docs/images/Reports.jpeg" width="245" alt="Reports"><br><strong>7. Reports</strong></td>
-    <td align="center"><img src="./docs/images/Settings.jpeg" width="245" alt="Settings"><br><strong>8. Settings</strong></td>
+    <td align="center"><img src="./assets/screenshots/web/4.jpeg" width="600" alt="Analytics"><br><strong>5. Analytics</strong></td>
+    <td align="center"><img src="./assets/screenshots/web/5.jpeg" width="600" alt="Alerts"><br><strong>6. Alerts</strong></td>
+    <td align="center"><img src="./assets/screenshots/web/7.jpeg" width="600" alt="Reports"><br><strong>7. Reports</strong></td>
   </tr>
 </table>
 
@@ -117,7 +115,7 @@ Our system is **not designed to replace healthcare professionals**. Instead, it 
 
 ## Project Demo
 
-![UI Walkthrough](./assets/images/Codefest.gif)
+![UI Walkthrough](./assets/screenshots/demo-updated.gif)
 
 ## Live Demo
 
@@ -396,7 +394,7 @@ graph TD
 
 ---
 
-## API Guide & Documentation
+<!-- ## API Guide & Documentation
 
 API Guide Links: <br/>
 
@@ -410,7 +408,7 @@ Documention Links: <br/>
 [Project Architecture Documentation](./ai-engine/Documentations/ARCHITECTURE.md) <br/>
 [Frontend Documentation](./frontend/README.md) <br/>
 [AI Engine Documentation](./ai-engine/README.md) <br/>
-[AI Engine Quickstart](./ai-engine/Documentations/QUICKSTART.md)
+[AI Engine Quickstart](./ai-engine/Documentations/QUICKSTART.md) -->
 
 ## Key Features & Innovation
 
