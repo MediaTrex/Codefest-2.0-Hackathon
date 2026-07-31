@@ -123,6 +123,18 @@ Our system is **not designed to replace healthcare professionals**. Instead, it 
 
 [CareFlow AI Demo Video link](https://drive.google.com/file/d/18k31h3aEPSvc5uT7_2tIN_J6h4u0wNKg/view?usp=sharing)
 
+## How to Run
+```bash
+# 1. Copy example env and fill in your keys
+cp .env.example .env
+
+# 2. Start all services
+docker-compose up -d
+
+# 3. Check logs
+docker-compose logs -f
+```
+
 ---
 
 ## Tech Stack & Reasoning
